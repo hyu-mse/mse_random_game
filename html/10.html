@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎲 신소재 랜덤게임 🎲</title>
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+</head>
+<body>
+    <div id="root">
+    </div>
+</body>
+<!--react 불러오기-->
+<script
+src="https://unpkg.com/react@18/umd/react.development.js"
+crossorigin
+></script>
+<!--react dom 불러오기-->
+<script
+src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+crossorigin
+></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<!--react code-->
+<script type="text/babel">
+    const root = document.getElementById("root");
+
+    //title print
+    const Title = () => (
+        <div id="title_container">
+            <div
+                id="main_title"
+            >
+            신소재 랜덤게임
+            </div>
+            <div
+                id="semi_title">
+            - 2023년 한양대학교 신소재공학부 미리배움터 -
+            </div>      
+        </div>
+    );
+    
+    //gameselec btn make
+    const Gamecard = () => (
+        <div id="show" className="card_container">
+            <div id="quiz_info">Q. 다음이 나타내는 영화는?</div>
+            <div id="quiz_imo">🃏🎰💧👈🏻</div>
+            <div id="quiz_answer">[ 나우 유 씨미 1 ]</div>
+        </div>
+    );
+
+    const Resultcard = () => (
+        <div id="hide" className="card_container">
+            <div>💎💎💎</div>
+            <div>30점</div>
+        </div>
+    );
+
+    const Backbtn = () => (
+        <a href="../game_select.html" className="back_btn">👈</a>
+    );
+
+    const Resultbtn = () => (
+        <a className="back_btn" onClick={()=>{
+                const card = document.getElementById("show");
+                const result = document.getElementById("hide");
+                card.id= "hide";
+                result.id ="show";
+                
+            }}>🎁</a>
+    );
+
+    const Answerbtn = () => (
+        <a className="back_btn" onClick={()=>{
+                const answer = document.getElementById("quiz_answer");
+                answer.style.display ="inline";
+                
+            }}>👀</a>
+    );
+
+    //all container
+    const Container = () => (
+      <div id="container">
+        <Title />
+        <Gamecard />
+        <Resultcard />
+        <div id="btnContainer">
+            <Backbtn />
+            <Resultbtn />
+            <Answerbtn />
+        </div>
+      </div>
+    );
+
+    //render container
+    ReactDOM.createRoot(root).render(<Container />);
+
+
+</script>
+</html>
